@@ -15,7 +15,14 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.scss$/i,
+        use: ['style-loader', 'sass-loader'],
+      },
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   output: {
     path: path.resolve(__dirname, 'public'),

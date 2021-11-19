@@ -7,7 +7,26 @@
     <title>Todo Webpack+TypeScript</title>
   </head>
   <body>
-    <h1 class="h1">Halo Dunia!</h1>
+    <div class="page-wrapper" a>
+      <h1 class="title">Kegiatanku!</h1>
+      <form id="form" class="form">
+        <input
+          type="text"
+          class="form-control"
+          id="item"
+          placeholder="Kegiatanku adalah ..."
+          autocomplete="off"
+        />
+        <button type="submit" class="btn btn-primary">Tambah</button>
+      </form>
+
+      <div class="todo-list">
+        <!-- <div class="todo-item-wrapper">
+          <p class="todo-item">...</p>
+          <button class="btn btn-danger todo-delete">Delete</button>
+        </div> -->
+      </div>
+    </div>
     <script src="bundle.js"></script>
   </body>
 </html>
