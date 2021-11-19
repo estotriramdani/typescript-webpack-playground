@@ -9,9 +9,11 @@ import {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const localJson = checkLocalStorage();
+  let localJson = checkLocalStorage();
   insertToDo({ input, localJson });
+  localJson = checkLocalStorage();
   updateScreen({ nodeList: localJson, toDoList });
+  deleteButton();
 });
 
 window.onload = () => {

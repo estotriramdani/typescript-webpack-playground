@@ -23,14 +23,15 @@ export const deleteButton = (): void => {
   toDoDeleteButton.forEach((element) => {
     let localJson = checkLocalStorage();
     element.addEventListener('click', () => {
+      console.log('ok');
       localJson.forEach((item) => {
         if (item.timestamps.toString() !== element.id) {
           newToDo.push({ timestamps: item.timestamps, todo: item.todo });
         }
       });
       localStorage.setItem('latihan_todo', JSON.stringify(newToDo));
-      localJson = checkLocalStorage();
-      updateScreen({ nodeList: localJson, toDoList });
+      updateScreen({ nodeList: checkLocalStorage(), toDoList });
+      deleteButton();
     });
   });
 };
@@ -51,4 +52,5 @@ export const updateScreen = (params: UpdateScreenInterface): void => {
     toDoItem += toDoItemGenerator(item);
   });
   toDoList.innerHTML = toDoItem;
+  localStorage.setItem('latihan_todo', JSON.stringify(nodeList));
 };
