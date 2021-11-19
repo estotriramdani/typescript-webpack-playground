@@ -2,7 +2,7 @@ import { form, input, toDoList } from './doms/index';
 import './css/style.css';
 import {
   checkLocalStorage,
-  deleteButton,
+  getDeleteButtonNode,
   insertToDo,
   updateScreen,
 } from './utils/index';
@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
   insertToDo({ input, localJson });
   localJson = checkLocalStorage();
   updateScreen({ nodeList: localJson, toDoList });
-  deleteButton();
+  getDeleteButtonNode();
 });
 
 window.onload = () => {
@@ -22,6 +22,6 @@ window.onload = () => {
     toDoList.innerHTML = 'Tambahkan item baru!';
   } else {
     updateScreen({ nodeList: localJson, toDoList });
-    deleteButton();
+    getDeleteButtonNode();
   }
 };

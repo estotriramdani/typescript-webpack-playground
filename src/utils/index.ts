@@ -16,14 +16,13 @@ export const insertToDo = (params: InsertToDoInterface): void => {
   input.value = '';
 };
 
-export const deleteButton = (): void => {
+export const getDeleteButtonNode = (): void => {
   const toDoDeleteButton = document.querySelectorAll('.todo-delete')!;
   let newToDo: ToDoInterface[] = [];
 
   toDoDeleteButton.forEach((element) => {
     let localJson = checkLocalStorage();
     element.addEventListener('click', () => {
-      console.log('ok');
       localJson.forEach((item) => {
         if (item.timestamps.toString() !== element.id) {
           newToDo.push({ timestamps: item.timestamps, todo: item.todo });
@@ -31,7 +30,7 @@ export const deleteButton = (): void => {
       });
       localStorage.setItem('latihan_todo', JSON.stringify(newToDo));
       updateScreen({ nodeList: checkLocalStorage(), toDoList });
-      deleteButton();
+      getDeleteButtonNode();
     });
   });
 };
@@ -52,5 +51,7 @@ export const updateScreen = (params: UpdateScreenInterface): void => {
     toDoItem += toDoItemGenerator(item);
   });
   toDoList.innerHTML = toDoItem;
-  localStorage.setItem('latihan_todo', JSON.stringify(nodeList));
+  if (nodeList.length <= 0) {
+    toDoList.innerHTML = 'Tambahkan item baru!';
+  }
 };
